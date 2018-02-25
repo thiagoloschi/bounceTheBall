@@ -3,7 +3,8 @@ import { BOUNCE_THE_BALL, UPDATE_STAGE } from './constants';
 
 export const initialState = fromJS({
   clicks: 0,
-  stage: ' ',
+  stage: '',
+  lastStage: undefined,
 });
 
 export default (state = initialState, action) => {
