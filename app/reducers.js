@@ -7,6 +7,7 @@ import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import playgroundReducer from 'containers/Playground/reducer';
 
 /*
  * routeReducer
@@ -42,6 +43,7 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
+    playground: playgroundReducer,
     language: languageProviderReducer,
     ...injectedReducers,
   });
