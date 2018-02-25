@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
@@ -8,12 +9,26 @@ import Ball from 'components/Ball/index';
 
 import { makeSelectClicks, makeSelectStage } from './selectors';
 import { increaseBounces, updateStage } from './actions';
+import { Wrapper, Text } from './Styles';
 
 import messages from './messages';
 import { withMotivation } from './supportiveMessages';
 import './Playground.min.css';
 
 export class Playground extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.state = { seconds: 30, stage: '' };
+  }
+
+  componentDidMount() {
+    setTimeout(this.props.gameOver, 30000);
+    this.interval = setInterval(() => this.tick(), 1000);
+    if (this.state.seconds === 0) {
+      this.props.gameOver();
+    }
+  }
 
   componentWillUpdate() {
     if (this.props.clicks % 20 === 0) {
@@ -23,29 +38,38 @@ export class Playground extends React.PureComponent {
     }
   }
 
+  tick() {
+    this.setState((prevState) => ({
+      seconds: prevState.seconds - 1,
+    }));
+  }
+
   render() {
     return (
-      <div className={'playground'}>
-        <div className={'playground__text'}>
+      <Wrapper>
+        <Text>
           <FormattedMessage {...messages.header} />
-        </div >
-        <div className={'playground__text --big'}>
+        </Text >
+
+        <Text className={'big'}>
           {this.props.clicks}
-        </div>
-        <div
-          onClick={this.props.bounce}
-          role={'presentation'}
-        >
+        </Text>
+
+        <div onClick={this.props.bounce} role={'presentation'}>
           <Ball />
         </div>
 
-        <div className={'playground__text --big --bottom'}>
+        <Text className={'big bottom'}>
+          {this.state.seconds} seconds
+        </Text >
+
+        <Text className={'big bottom'}>
           {this.props.currentStage && <FormattedMessage
             {...messages.incentive}
             values={{ stage: this.props.currentStage }}
           />}
-        </div >
-      </div>
+        </Text>
+      </Wrapper>
     );
   }
 }
@@ -55,6 +79,7 @@ Playground.propTypes = {
   bounce: PropTypes.func,
   setStage: PropTypes.func,
   clearStage: PropTypes.func,
+  gameOver: PropTypes.func,
   currentStage: PropTypes.string,
 };
 
@@ -67,6 +92,7 @@ export const mapDispatchToProps = (dispatch) => ({
   bounce: () => dispatch(increaseBounces()),
   setStage: (stage) => dispatch(updateStage(stage)),
   clearStage: () => dispatch(updateStage(undefined)),
+  gameOver: () => dispatch(push('/')),
 });
 
 export default compose(
