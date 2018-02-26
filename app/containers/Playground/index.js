@@ -74,7 +74,6 @@ Playground.propTypes = {
   clicks: PropTypes.number,
   bounce: PropTypes.func,
   setStage: PropTypes.func,
-  clearStage: PropTypes.func,
   gameOver: PropTypes.func,
   currentStage: PropTypes.string,
 };
