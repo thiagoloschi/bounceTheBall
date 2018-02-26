@@ -1,26 +1,37 @@
-import styled from 'styled-components';
+import { FullPageWrapper } from 'commons/styledComponents/PageWrapper';
+import { TextBase } from 'commons/styledComponents/TextBase';
 
-export const Wrapper = styled.div`
-  background-color: #333;
-  height: 100vh;
-  width: 100vw;
+export const Wrapper = FullPageWrapper.extend`
   display: flex;
   justify-content: center;
   cursor: grab;
   cursor: -webkit-grab;
-
-  > * {
-     height: fit-content;
-     border-radius: 100%;
-  }
 `;
 
-export const Text = styled.div`
-  color: #FFA500;
+export const Text = TextBase.extend`
   font-size: 32px;
-  font-family: 'Cabin Sketch', cursive;
-  text-shadow: 2px 4px 4px #000;
   margin: 32px 0;
   position: absolute;
-  transition: font-size ease 2s;
+`;
+
+export const TextBig = TextBase.extend`
+  font-size: 48px;
+  margin: 96px 0;
+  position: absolute;
+`;
+
+export const TextBigBottomRight = TextBase.extend`
+  font-size: 56px;
+  bottom: 0;
+  margin: 0;
+  position: absolute;
+  right: 32px;
+`;
+
+export const TextBigBottomLeft = TextBase.extend`
+  font-size: 56px;
+  bottom: 0;
+  margin: 0;
+  position: absolute;
+  left: 32px;
 `;
