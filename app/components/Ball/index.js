@@ -1,13 +1,19 @@
 import React from 'react';
-import './Ball.min.css';
+import {
+  BallWrapper,
+  Stripe,
+  StripeVertical,
+  StripeRightRounded,
+  StripeLeftRounded,
+} from './Styles';
 
 export const Ball = () => (
-  <div className={'ball'}>
-    <div className={'ball__stripe--right-rounded'} />
-    <div className={'ball__stripe'} />
-    <div className={'ball__stripe--vertical'} />
-    <div className={'ball__stripe--left-rounded'} />
-  </div>
+  <BallWrapper>
+    <StripeRightRounded />
+    <Stripe />
+    <StripeVertical />
+    <StripeLeftRounded />
+  </BallWrapper>
 );
 
 export default Ball;
