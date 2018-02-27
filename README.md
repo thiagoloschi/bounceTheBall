@@ -1,5 +1,5 @@
 # bounceTheBall
-(In progress) A game based on a pure CSS design I created last weekend.
+(In progress) A game based on a pure CSS design I created last weekend, that can be seen in this codepen here https://codepen.io/thiagoloschi/full/LQeeqP/
 
 ## Technologies
 Progressive Web App, React, Redux, Webpack, Nodejs, Styled-components, BEM.
