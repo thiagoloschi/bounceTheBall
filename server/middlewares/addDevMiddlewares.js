@@ -24,7 +24,6 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
   const fs = middleware.fileSystem;
 
   app.get('/me', (req, res) => {
-    console.log(req, '---', res);
     res.send('Thiago Loschi');
   });
 

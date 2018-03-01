@@ -5,4 +5,8 @@ export default defineMessages({
     id: 'app.components.landingpage.header',
     defaultMessage: 'Bounce The Ball',
   },
+  play: {
+    id: 'app.components.landingpage.play',
+    defaultMessage: 'Play',
+  },
 });
