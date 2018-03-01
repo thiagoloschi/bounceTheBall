@@ -18,7 +18,6 @@ beforeAll(() => {
   renderedComponent = renderShallow(mockedProps);
 });
 
-
 describe('<LandingPage />', () => {
   it('should render a button', () => {
     expect(renderedComponent.contains(
@@ -38,7 +37,7 @@ describe('<LandingPage />', () => {
     const dispatch = jest.fn();
     const actions = mapDispatchToProps(dispatch);
 
-    it('should already have the funcion push defined', () => {
+    it('should already have the funcion play defined', () => {
       expect(actions.play).toBeDefined();
     });
 

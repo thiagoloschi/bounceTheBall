@@ -13,7 +13,7 @@ export const Button = (props) => (
 
 Button.propTypes = {
   action: PropTypes.func.isRequired,
-  label: PropTypes.isRequired,
+  label: PropTypes.object.isRequired,
 };
 
 export default Button;

@@ -10,12 +10,11 @@ import {
 } from '../Ball';
 
 const renderShallow = (componentProps) => shallow(<Ball {...componentProps} />);
+let renderedComponent;
 
 beforeAll(() => {
   renderedComponent = renderShallow();
 });
-
-let renderedComponent;
 
 describe('<Ball />', () => {
   it('should render correctly', () => {

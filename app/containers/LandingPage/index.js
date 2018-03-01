@@ -28,6 +28,5 @@ export const mapDispatchToProps = (dispatch) => ({
   play: () => dispatch(push('/play')),
 });
 
-
 export default connect(null, mapDispatchToProps)(LandingPage);
 
