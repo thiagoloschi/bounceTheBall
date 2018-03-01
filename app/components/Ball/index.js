@@ -5,7 +5,7 @@ import {
   StripeVertical,
   StripeRightRounded,
   StripeLeftRounded,
-} from './Styles';
+} from './Ball';
 
 export const Ball = () => (
   <BallWrapper>

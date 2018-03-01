@@ -3,21 +3,24 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { push } from 'react-router-redux';
+import Button from 'components/Button';
 import messages from './messages';
-import { LandingWrapper } from './Styles';
+import { LandingWrapper, Title } from './LandingPage';
 
-class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <LandingWrapper>
-        <FormattedMessage {...messages.header} />
-        <div role="presentation" onClick={this.props.play}>Play</div>
+        <Title>
+          <FormattedMessage {...messages.header} />
+        </Title>
+        <Button action={this.props.play} label={messages.play}></Button>
       </LandingWrapper>
     );
   }
 }
 
-HomePage.propTypes = {
+LandingPage.propTypes = {
   play: PropTypes.func,
 };
 
@@ -26,5 +29,5 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(null, mapDispatchToProps)(HomePage);
+export default connect(null, mapDispatchToProps)(LandingPage);
 
