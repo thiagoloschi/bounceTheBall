@@ -4,5 +4,6 @@
 ## Technologies
 Progressive Web App, React, Redux, Webpack, Nodejs, Styled-components, BEM, Jest, Enzyme.
 
-## Development is in progress
+## Demo
+Development is stil in progress, but you can already see a demo [here](https://bouncetheball.herokuapp.com/).
 ![image](https://user-images.githubusercontent.com/10034981/36639635-c36c6c3e-19ef-11e8-9257-2120b2b492d8.png)
