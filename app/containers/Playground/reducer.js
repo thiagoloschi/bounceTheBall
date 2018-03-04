@@ -5,6 +5,11 @@ export const initialState = fromJS({
   clicks: 0,
   stage: '',
   lastStage: undefined,
+  ranking: [
+    { player: 'Monique', score: 168, stage: 'OUTRAGEOUS' },
+    { player: 'Thiago', score: 146, stage: 'COLOSSAL' },
+    { player: 'Nina', score: 122, stage: 'UNBELIEVABLE' },
+  ],
 });
 
 export default (state = initialState, action) => {

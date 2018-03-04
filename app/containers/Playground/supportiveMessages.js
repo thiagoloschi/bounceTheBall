@@ -5,7 +5,7 @@ export const causeThat = {
   isWow: 'WOOW',
   isKeepItUp: 'KEEP IT UP',
   isUnbelievable: 'UNBELIEVABLE',
-  isUltra: 'COLOSSAL',
+  isColossal: 'COLOSSAL',
   isOutrageos: 'OUTRAGEOUS',
   isInsane: 'INSANE',
   isKing: 'KING OF THE FUCKING WORLD',
@@ -26,7 +26,7 @@ export const withMotivation = (stage) => {
     case 120:
       return causeThat.isUnbelievable;
     case 140:
-      return causeThat.isUltra;
+      return causeThat.isColossal;
     case 160:
       return causeThat.isOutrageos;
     case 180:
