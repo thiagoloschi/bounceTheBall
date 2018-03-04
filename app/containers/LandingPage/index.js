@@ -13,7 +13,7 @@ import { LineWrapper } from 'commons/styledComponents/PageWrapper';
 import messages from './messages';
 import { LandingWrapper, Title } from './LandingPage';
 
-class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <LandingWrapper>
