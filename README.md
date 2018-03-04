@@ -3,8 +3,9 @@
 
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [Demo](#demo)
-4. [Screenshots](#screenshots)
+3. [Development](#development)
+4. [Demo](#demo)
+5. [Screenshots](#screenshots)
 
 ### Description
 This is a small game based on a pure CSS design I created last weekend, and that can be seen in this codepen [here](https://codepen.io/thiagoloschi/full/LQeeqP/). The challenge here is to bounce the ball as many times you can get in 30 seconds. Hurry up and you can make the Top 10.
@@ -13,6 +14,9 @@ This is a small game based on a pure CSS design I created last weekend, and that
 ### Technologies
 Progressive Web App, React, Redux, Webpack, Nodejs, Styled-components, BEM, Jest, Enzyme.
 <br />
+
+### Development
+The project is currently being developed. You can refer to the [Pull Requests](https://github.com/thiagoloschi/bounceTheBall/pulls?q=is%3Apr+is%3Aclosed) page for a full coding documentation.
 
 ### Demo
 Although the game development is stil in progress, you can see a beta demo [here](https://bouncetheball.herokuapp.com/).
