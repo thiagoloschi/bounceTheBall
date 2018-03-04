@@ -11,3 +11,8 @@ export const makeSelectStage = () => createSelector(
   selectPlayground,
   (state) => state.get('stage')
 );
+
+export const makeSelectRanking = () => createSelector(
+  selectPlayground,
+  (state) => state.get('ranking').toJS()
+);
