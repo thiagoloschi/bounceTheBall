@@ -5,12 +5,9 @@ export const LandingWrapper = FullPageWrapper.extend`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Title = TextBase.extend`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin: 16px;
   font-size: 96px;
 `;

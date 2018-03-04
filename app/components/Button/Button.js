@@ -8,4 +8,5 @@ export const Wrapper = styled.div`
   font-family: 'Cabin Sketch', cursive;
   cursor: pointer;
   box-shadow: 2px 4px 4px #000;
+  width: fit-content;
 `;
