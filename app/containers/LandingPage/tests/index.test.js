@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { push } from 'react-router-redux';
 import Button from 'components/Button';
 import { Title } from '../LandingPage';
-import LandingPage, { mapDispatchToProps } from '../index';
+import { LandingPage, mapDispatchToProps } from '../index';
 import messages from '../messages';
 
 const renderShallow = (componentProps) => shallow(<LandingPage {...componentProps} />);
