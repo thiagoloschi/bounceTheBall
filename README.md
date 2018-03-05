@@ -25,7 +25,7 @@ Although the game development is stil in progress, you can see a beta demo [here
 ### Screenshots
 <br /> 
 
-![image](https://user-images.githubusercontent.com/10034981/36943407-9c434b46-1f67-11e8-8a37-dba75031c8cc.png)
+![image](https://user-images.githubusercontent.com/10034981/36958404-527f0460-201a-11e8-8b43-5ef39b39c530.png)
 <h6 align="center">Landing page</h6>
 <br/><br/><br/>
 
