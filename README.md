@@ -29,6 +29,6 @@ Although the game development is stil in progress, you can see a beta demo [here
 <h6 align="center">Landing page</h6>
 <br/><br/><br/>
 
-https://user-images.githubusercontent.com/10034981/36958530-48abaf8c-201b-11e8-878e-f5c19237437c.png
+![image](https://user-images.githubusercontent.com/10034981/36958530-48abaf8c-201b-11e8-878e-f5c19237437c.png)
 <h6 align="center">Playground screen</h6>
 <br/><br/><br/>
