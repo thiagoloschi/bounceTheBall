@@ -16,3 +16,8 @@ export const makeSelectRanking = () => createSelector(
   selectPlayground,
   (state) => state.get('ranking').toJS()
 );
+
+export const makeSelectIsAllSet = () => createSelector(
+  selectPlayground,
+  (state) => state.getIn(['user', 'isUsernameWrong'])
+);

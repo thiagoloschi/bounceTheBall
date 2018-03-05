@@ -6,7 +6,7 @@ import {
 } from './Button';
 
 export const Button = (props) => (
-  <Wrapper onClick={props.action}>
+  <Wrapper onClick={props.action} disabled={props.disabled}>
     <FormattedMessage {...props.label} />
   </Wrapper>
 );
@@ -14,6 +14,11 @@ export const Button = (props) => (
 Button.propTypes = {
   action: PropTypes.func.isRequired,
   label: PropTypes.object.isRequired,
+  disabled: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  disabled: false,
 };
 
 export default Button;
