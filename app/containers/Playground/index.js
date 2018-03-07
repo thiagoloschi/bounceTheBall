@@ -7,8 +7,8 @@ import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import Ball from 'components/Ball/index';
 
-import { makeSelectClicks, makeSelectStage } from './selectors';
-import { increaseBounces, updateStage } from './actions';
+import { makeSelectClicks, makeSelectStage, makeSelectUsername } from './selectors';
+import { increaseBounces, updateStage, saveAndReset } from './actions';
 import { Wrapper, Text, TextBig, TextBigBottomLeft, TextBigBottomRight } from './Styles';
 
 import messages from './messages';
@@ -22,21 +22,37 @@ export class Playground extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000);
+    if (this.state.seconds === 30) {
+      this.interval = setInterval(this.tick, 1000);
+    }
+    if (!this.props.username) {
+      this.props.gameOver();
+    }
   }
 
-  componentWillUpdate() {
-    if (this.props.clicks % 20 === 0) {
-      const stage = withMotivation(this.props.clicks);
+  componentWillReceiveProps(newProps) {
+    if (newProps.clicks % 20 === 0) {
+      const stage = withMotivation(newProps.clicks);
       this.props.setStage(stage);
     }
   }
 
-  tick() {
+  componentWillUnmount() {
+    this.interval = clearInterval(this.interval);
+  }
+
+
+  timesUp = () => {
+    this.props.prepareNewGame(this.props.username, this.props.clicks, this.props.currentStage);
+    return this.props.gameOver();
+  }
+
+  tick = () => {
     if (this.state.seconds === 0) {
-      this.props.gameOver();
+      clearInterval(this.interval);
+      return this.timesUp();
     }
-    this.setState((prevState) => ({
+    return this.setState((prevState) => ({
       seconds: prevState.seconds - 1,
     }));
   }
@@ -58,7 +74,7 @@ export class Playground extends React.PureComponent {
           <FormattedMessage
             {...messages.timing}
           />
-        </TextBigBottomRight >
+        </TextBigBottomRight>
         <TextBigBottomLeft>
           {this.props.currentStage && <FormattedMessage
             {...messages.incentive}
@@ -75,19 +91,22 @@ Playground.propTypes = {
   bounce: PropTypes.func,
   setStage: PropTypes.func,
   gameOver: PropTypes.func,
+  prepareNewGame: PropTypes.func,
   currentStage: PropTypes.string,
+  username: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   clicks: makeSelectClicks(),
   currentStage: makeSelectStage(),
+  username: makeSelectUsername(),
 });
 
 export const mapDispatchToProps = (dispatch) => ({
   bounce: () => dispatch(increaseBounces()),
   setStage: (stage) => dispatch(updateStage(stage)),
-  clearStage: () => dispatch(updateStage(undefined)),
   gameOver: () => dispatch(push('/')),
+  prepareNewGame: (username, score, stage) => dispatch(saveAndReset(username, score, stage)),
 });
 
 export default compose(

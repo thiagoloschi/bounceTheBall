@@ -9,4 +9,8 @@ export default defineMessages({
     id: 'app.components.landingpage.play',
     defaultMessage: 'Play',
   },
+  username: {
+    id: 'app.components.landingpage.username',
+    defaultMessage: 'Enter a username',
+  },
 });

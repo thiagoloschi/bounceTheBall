@@ -4,7 +4,7 @@ import { capitalize } from 'lodash';
 import { Table } from '../index';
 import { Wrapper, Header, Field } from '../Table';
 
-describe('<Button />', () => {
+describe('<Table />', () => {
   let renderedComponent;
   const renderShallow = (componentProps) => shallow(<Table {...componentProps} />);
 
