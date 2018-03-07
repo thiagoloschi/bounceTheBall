@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectRanking, makeSelectIsAllSet } from 'containers/Playground/selectors';
+import { makeSelectRanking, makeSelectIsAllSet, makeSelectUsername } from 'containers/Playground/selectors';
 import { readyToPlay } from 'containers/Playground/actions';
 import Button from 'components/Button';
 import Table from 'components/Table';
@@ -39,6 +39,7 @@ export class LandingPage extends React.PureComponent { // eslint-disable-line re
           <TextInput
             placeholder={messages.username}
             action={this.onUsernameInput}
+            value={this.props.username}
           />
           <Button
             action={this.props.play}
@@ -56,11 +57,13 @@ LandingPage.propTypes = {
   isReady: PropTypes.bool,
   content: PropTypes.array,
   enablePlay: PropTypes.func,
+  username: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   content: makeSelectRanking(),
   isReady: makeSelectIsAllSet(),
+  username: makeSelectUsername(),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

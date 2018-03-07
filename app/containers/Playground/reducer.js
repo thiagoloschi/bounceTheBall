@@ -8,7 +8,7 @@ import {
 
 export const initialState = fromJS({
   clicks: 0,
-  stage: '',
+  stage: undefined,
   ranking: [
     { player: 'Monique', score: 168, stage: 'OUTRAGEOUS' },
     { player: 'Thiago', score: 146, stage: 'COLOSSAL' },
@@ -21,17 +21,17 @@ export const initialState = fromJS({
 });
 
 const saveProgressAndResetData = (state, action) => {
-  const top5 = state.get('ranking');
-  const username = state.getIn(['user', 'name']);
+  const top5 = state.get('ranking').toJS();
+  const stage = action.stage ? action.stage : ' - ';
   const lastPlay = {
-    player: username,
+    player: action.username,
     score: action.score,
-    stage: action.stage,
+    stage,
   };
   top5.push(lastPlay);
   return state.mergeDeep({
     clicks: 0,
-    stage: '',
+    stage: undefined,
     ranking: top5,
   });
 };

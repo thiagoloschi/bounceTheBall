@@ -26,9 +26,10 @@ export function readyToPlay(username, disable) {
   };
 }
 
-export function saveAndReset(score, stage) {
+export function saveAndReset(username, score, stage) {
   return {
     type: SAVE_AND_RESET,
+    username,
     score,
     stage,
   };

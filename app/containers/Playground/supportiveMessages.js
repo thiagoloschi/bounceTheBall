@@ -34,6 +34,6 @@ export const withMotivation = (stage) => {
     case 200:
       return causeThat.isKing;
     default:
-      return ' ';
+      return undefined;
   }
 };

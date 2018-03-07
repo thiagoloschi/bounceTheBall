@@ -7,7 +7,12 @@ import {
 
 export const TextInput = (props) => (
   <Wrapper>
-    <Input type={'text'} placeholder={props.intl.formatMessage(props.placeholder)} onChange={props.action} />
+    <Input
+      type={'text'}
+      placeholder={props.intl.formatMessage(props.placeholder)}
+      onChange={props.action}
+      value={props.value}
+    />
   </Wrapper>
 );
 
@@ -15,6 +20,11 @@ TextInput.propTypes = {
   intl: intlShape.isRequired,
   action: PropTypes.func,
   placeholder: PropTypes.object.isRequired,
+  value: PropTypes.string,
+};
+
+TextInput.defaultProps = {
+  value: '',
 };
 
 export default injectIntl(TextInput);

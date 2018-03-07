@@ -7,7 +7,7 @@ import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import Ball from 'components/Ball/index';
 
-import { makeSelectClicks, makeSelectStage } from './selectors';
+import { makeSelectClicks, makeSelectStage, makeSelectUsername } from './selectors';
 import { increaseBounces, updateStage, saveAndReset } from './actions';
 import { Wrapper, Text, TextBig, TextBigBottomLeft, TextBigBottomRight } from './Styles';
 
@@ -25,6 +25,9 @@ export class Playground extends React.PureComponent {
     if (this.state.seconds === 30) {
       this.interval = setInterval(this.tick, 1000);
     }
+    if (!this.props.username) {
+      this.props.gameOver();
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -40,7 +43,7 @@ export class Playground extends React.PureComponent {
 
 
   timesUp = () => {
-    this.props.prepareNewGame();
+    this.props.prepareNewGame(this.props.username, this.props.clicks, this.props.currentStage);
     return this.props.gameOver();
   }
 
@@ -90,18 +93,20 @@ Playground.propTypes = {
   gameOver: PropTypes.func,
   prepareNewGame: PropTypes.func,
   currentStage: PropTypes.string,
+  username: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   clicks: makeSelectClicks(),
   currentStage: makeSelectStage(),
+  username: makeSelectUsername(),
 });
 
-export const mapDispatchToProps = (dispatch, props) => ({
+export const mapDispatchToProps = (dispatch) => ({
   bounce: () => dispatch(increaseBounces()),
   setStage: (stage) => dispatch(updateStage(stage)),
   gameOver: () => dispatch(push('/')),
-  prepareNewGame: () => dispatch(saveAndReset(props.clicks, props.currentStage)),
+  prepareNewGame: (username, score, stage) => dispatch(saveAndReset(username, score, stage)),
 });
 
 export default compose(
