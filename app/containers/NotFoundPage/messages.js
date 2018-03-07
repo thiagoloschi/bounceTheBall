@@ -1,13 +1,16 @@
-/*
- * NotFoundPage Messages
- *
- * This contains all the text for the NotFoundPage component.
- */
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.NotFoundPage.header',
-    defaultMessage: 'This is NotFoundPage component!',
+  title: {
+    id: 'app.components.NotFoundPage.title',
+    defaultMessage: 'Oops!',
+  },
+  description: {
+    id: 'app.components.NotFoundPage.description',
+    defaultMessage: 'Looks like you\'re trying to reach a page that doesn\'t exist',
+  },
+  label: {
+    id: 'app.components.NotFoundPage.label',
+    defaultMessage: 'Go back',
   },
 });
