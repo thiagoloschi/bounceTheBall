@@ -8,10 +8,14 @@ export const causeThat = {
   isColossal: 'COLOSSAL',
   isOutrageos: 'OUTRAGEOUS',
   isInsane: 'INSANE',
-  isKing: 'KING OF THE FUCKING WORLD',
+  isProfessional: 'PROFESSIONAL',
+  isKing: 'KING BOUNCER',
 };
 
 export const withMotivation = (stage) => {
+  if (stage >= 220) {
+    return causeThat.isKing;
+  }
   switch (stage) {
     case 20:
       return causeThat.isNice;
@@ -32,7 +36,7 @@ export const withMotivation = (stage) => {
     case 180:
       return causeThat.isInsane;
     case 200:
-      return causeThat.isKing;
+      return causeThat.isProfessional;
     default:
       return undefined;
   }

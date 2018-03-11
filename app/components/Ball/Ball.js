@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 const ballSize = 150;
-const bounceSize = 200;
+const bounceSize = 275;
 
 export const BallWrapper = styled.div`
   overflow: hidden;
-  margin-top: ${bounceSize}px;
   border-radius: ${ballSize}px;
   background: linear-gradient(#FFA500, #E65100);
   height: ${ballSize}px;
@@ -23,10 +22,9 @@ export const BallWrapper = styled.div`
     width: ${ballSize - 5}px;
     box-shadow: 0px 0px 10px 0px #000;
     background: linear-gradient(#E65100, #FFA500);
-    margin-top: ${2.2 * bounceSize}px;
     cursor: grabbing;
     transition: all ease 0.1s;
-    transform: rotate(90deg); 
+    transform:  translateY(${bounceSize}px) rotate(90deg); 
   }
 `;
 

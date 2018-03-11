@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-  max-width: 150px;
+  max-width: 128px;
   color: #FFA500;
   font-family: 'Cabin Sketch', cursive;
   outline: none;

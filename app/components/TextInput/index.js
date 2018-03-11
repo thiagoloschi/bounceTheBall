@@ -12,6 +12,9 @@ export const TextInput = (props) => (
       placeholder={props.intl.formatMessage(props.placeholder)}
       onChange={props.action}
       value={props.value}
+      maxLength={props.maxLength}
+      required
+      autoFocus
     />
   </Wrapper>
 );
@@ -21,10 +24,12 @@ TextInput.propTypes = {
   action: PropTypes.func,
   placeholder: PropTypes.object.isRequired,
   value: PropTypes.string,
+  maxLength: PropTypes.number,
 };
 
 TextInput.defaultProps = {
   value: '',
+  maxLength: 15,
 };
 
 export default injectIntl(TextInput);
