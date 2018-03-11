@@ -9,5 +9,10 @@ export const LandingWrapper = FullPageWrapper.extend`
 `;
 
 export const Title = TextBase.extend`
+  padding-top: 56px;
   font-size: 96px;
+
+  @media (max-width: 768px) {
+    font-size: 64px;
+  }
 `;
