@@ -9,7 +9,7 @@ import Ball from 'components/Ball/index';
 
 import { makeSelectClicks, makeSelectStage, makeSelectUsername } from './selectors';
 import { increaseBounces, updateStage, saveAndReset } from './actions';
-import { Wrapper, Text, TextBig, TextBigBottomLeft, TextBigBottomRight } from './Styles';
+import { Wrapper, Text, TextBig, TextBigBottomLeft, TextBigBottomRight, BallWrapper, Header, Container, Stats } from './Playground';
 
 import messages from './messages';
 import { withMotivation } from './supportiveMessages';
@@ -41,7 +41,6 @@ export class Playground extends React.PureComponent {
     this.interval = clearInterval(this.interval);
   }
 
-
   timesUp = () => {
     this.props.prepareNewGame(this.props.username, this.props.clicks, this.props.currentStage);
     return this.props.gameOver();
@@ -58,29 +57,36 @@ export class Playground extends React.PureComponent {
   }
 
   render() {
+    const { bounce } = this.props;
     return (
       <Wrapper>
-        <Text>
-          <FormattedMessage {...messages.header} />
-        </Text >
-        <TextBig>
-          {this.props.clicks}
-        </TextBig>
-        <div onClick={this.props.bounce} role={'presentation'}>
-          <Ball />
-        </div>
-        <TextBigBottomRight>
-          {this.state.seconds}
-          <FormattedMessage
-            {...messages.timing}
-          />
-        </TextBigBottomRight>
-        <TextBigBottomLeft>
-          {this.props.currentStage && <FormattedMessage
-            {...messages.incentive}
-            values={{ stage: this.props.currentStage }}
-          />}
-        </TextBigBottomLeft>
+        <Container>
+          <Header>
+            <Text>
+              <FormattedMessage {...messages.header} />
+            </Text >
+            <TextBig>
+              {this.props.clicks}
+            </TextBig>
+          </Header>
+          <Stats>
+            <TextBigBottomLeft onClick={bounce}>
+              {this.props.currentStage && <FormattedMessage
+                {...messages.incentive}
+                values={{ stage: this.props.currentStage }}
+              />}
+            </TextBigBottomLeft>
+            <TextBigBottomRight>
+              {this.state.seconds}
+              <FormattedMessage
+                {...messages.timing}
+              />
+            </TextBigBottomRight>
+          </Stats>
+          <BallWrapper onClick={bounce}>
+            <Ball />
+          </BallWrapper>
+        </Container>
       </Wrapper>
     );
   }

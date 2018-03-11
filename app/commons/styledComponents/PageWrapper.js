@@ -13,5 +13,6 @@ export const LineWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-self: baseline;
   align-content: center;
 `;
