@@ -1,14 +1,24 @@
 import styled from 'styled-components';
 
+const fieldWidth = 150;
+
 export const Wrapper = styled.div`
-  display: flex-column;
-  flex-flow: column wrap;
+  display: flex;
+  flex-flow: row wrap;
   border: solid 1px #FFA500;
   height: fit-content;
   color: #FFA500;
   font-family: 'Cabin Sketch', cursive;
   box-shadow: 2px 4px 4px #000;
-  max-width: fit-content;
+  max-width: ${(props) => props.keys * fieldWidth}px;
+  max-height: 338px;
+  overflow: hidden;
+`;
+
+export const Content = styled.div`
+  max-height: 338px;
+  width: 100%;
+  overflow: scroll;
 `;
 
 export const Line = styled.div`
@@ -18,7 +28,7 @@ export const Line = styled.div`
 
 export const Field = styled.div`
   padding: 16px;
-  min-width: 150px;
+  width: ${fieldWidth}px;
   text-align: center;
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { capitalize } from 'lodash';
-import { Wrapper, Header, Line, Field } from './Table';
+import { Wrapper, Header, Line, Field, Content } from './Table';
 
 export const Table = (props) => {
   const keys = Object.keys(props.content[0]);
@@ -24,11 +24,13 @@ export const Table = (props) => {
   });
 
   return (
-    <Wrapper>
+    <Wrapper keys={keys.length}>
       <Header>
         { header }
       </Header>
-      { content }
+      <Content>
+        { content }
+      </Content>
     </Wrapper>
   );
 };

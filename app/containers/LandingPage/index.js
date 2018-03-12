@@ -6,7 +6,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import { makeSelectRanking, makeSelectIsAllSet, makeSelectUsername } from 'containers/Playground/selectors';
-import { readyToPlay } from 'containers/Playground/actions';
+import { readyToPlay, fetchRanking } from 'containers/Playground/actions';
 import Button from 'components/Button';
 import Table from 'components/Table';
 import TextInput from 'components/TextInput';
@@ -15,7 +15,11 @@ import { LineWrapper } from 'commons/styledComponents/PageWrapper';
 import messages from './messages';
 import { LandingWrapper, Title } from './LandingPage';
 
-export class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class LandingPage extends React.PureComponent {
+  componentWillMount() {
+    this.props.getRanking();
+  }
+
   onUsernameInput = (username) => {
     const value = username.target.value.trim();
     if (value.length > 3) {
@@ -58,6 +62,7 @@ LandingPage.propTypes = {
   content: PropTypes.array,
   enablePlay: PropTypes.func,
   username: PropTypes.string,
+  getRanking: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -69,6 +74,7 @@ const mapStateToProps = createStructuredSelector({
 export const mapDispatchToProps = (dispatch) => ({
   play: () => dispatch(push('/play')),
   enablePlay: (username, disable) => dispatch(readyToPlay(username, disable)),
+  getRanking: () => dispatch(fetchRanking()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(LandingPage));
