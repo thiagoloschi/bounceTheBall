@@ -1,18 +1,20 @@
 import { fromJS } from 'immutable';
+import { handle } from 'redux-pack';
 import {
   BOUNCE_THE_BALL,
   UPDATE_STAGE,
   READY_TO_PLAY,
   SAVE_AND_RESET,
+  FETCH_RANKING,
 } from './constants';
 
 export const initialState = fromJS({
   clicks: 0,
   stage: undefined,
   ranking: [
-    { player: 'Monique', score: 168, stage: 'OUTRAGEOUS' },
-    { player: 'Thiago', score: 146, stage: 'COLOSSAL' },
-    { player: 'Nina', score: 122, stage: 'UNBELIEVABLE' },
+    { place: 1, player: 'Monique', score: 168, stage: 'OUTRAGEOUS' },
+    { place: 2, player: 'Thiago', score: 146, stage: 'COLOSSAL' },
+    { place: 3, player: 'Nina', score: 122, stage: 'UNBELIEVABLE' },
   ],
   user: {
     name: undefined,
@@ -36,6 +38,21 @@ const saveProgressAndResetData = (state, action) => {
   });
 };
 
+const handleFetchRanking = (state, action) => {
+  console.log(action);
+  const payload = action.payload;
+  return handle(state, action, {
+    success: (prevState) => {
+      console.log(payload);
+      return prevState;
+    },
+    failure: (prevState) => {
+      console.log(payload);
+      return prevState;
+    },
+  });
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case BOUNCE_THE_BALL:
@@ -51,6 +68,8 @@ export default (state = initialState, action) => {
       });
     case SAVE_AND_RESET:
       return saveProgressAndResetData(state, action);
+    case FETCH_RANKING:
+      return handleFetchRanking(state, action);
     default:
       return state;
   }

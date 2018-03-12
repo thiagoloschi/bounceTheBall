@@ -5,6 +5,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
+import { middleware as reduxPackMiddleware } from 'redux-pack'
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
@@ -17,6 +18,7 @@ export default function configureStore(initialState = {}, history) {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
+    reduxPackMiddleware,
   ];
 
   const enhancers = [
