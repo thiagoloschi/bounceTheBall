@@ -18,7 +18,8 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   max-height: 338px;
   width: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflox-y: auto;
 `;
 
 export const Line = styled.div`
