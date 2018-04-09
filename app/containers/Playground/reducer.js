@@ -11,45 +11,26 @@ import {
 export const initialState = fromJS({
   clicks: 0,
   stage: undefined,
-  ranking: [
-    { place: 1, player: 'Monique', score: 168, stage: 'OUTRAGEOUS' },
-    { place: 2, player: 'Thiago', score: 146, stage: 'COLOSSAL' },
-    { place: 3, player: 'Nina', score: 122, stage: 'UNBELIEVABLE' },
-  ],
+  ranking: [],
   user: {
     name: undefined,
     isUsernameWrong: true,
   },
 });
 
-const saveProgressAndResetData = (state, action) => {
-  const top5 = state.get('ranking').toJS();
-  const stage = action.stage ? action.stage : ' - ';
-  const lastPlay = {
-    player: action.username,
-    score: action.score,
-    stage,
-  };
-  top5.push(lastPlay);
-  return state.mergeDeep({
-    clicks: 0,
-    stage: undefined,
-    ranking: top5,
+const saveProgressAndResetData = (state, action) =>
+  handle(state, action, {
+    finish: (prevState) => prevState.mergeDeep({
+      clicks: 0,
+      stage: undefined,
+    }),
   });
-};
 
 const handleFetchRanking = (state, action) => {
-  console.log(action);
   const payload = action.payload;
   return handle(state, action, {
-    success: (prevState) => {
-      console.log(payload);
-      return prevState;
-    },
-    failure: (prevState) => {
-      console.log(payload);
-      return prevState;
-    },
+    success: (prevState) => prevState.merge({ ranking: payload }),
+    failure: (prevState) => prevState,
   });
 };
 

@@ -1,6 +1,6 @@
 import { request, post } from './rest';
 
-const endpointBaseUrl = '/me';
+const endpointBaseUrl = '/ranking';
 
 export function callFetchRanking() {
   const endpoint = `${endpointBaseUrl}`;

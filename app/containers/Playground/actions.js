@@ -1,4 +1,4 @@
-import { callFetchRanking } from 'api/ranking';
+import { callFetchRanking, callUpdateRanking } from 'api/ranking';
 import {
   BOUNCE_THE_BALL,
   UPDATE_STAGE,
@@ -28,12 +28,18 @@ export function readyToPlay(username, disable) {
   };
 }
 
-export function saveAndReset(username, score, stage) {
+export function saveAndReset(player, score, stage) {
+  const lastPlay = {
+    player,
+    score,
+    stage: stage || ' - ',
+  };
   return {
     type: SAVE_AND_RESET,
-    username,
+    player,
     score,
     stage,
+    promise: callUpdateRanking(lastPlay),
   };
 }
 
