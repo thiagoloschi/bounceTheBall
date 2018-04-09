@@ -4,6 +4,12 @@ import { capitalize } from 'lodash';
 import { Wrapper, Header, Line, Field, Content } from './Table';
 
 export const Table = (props) => {
+  if (!props.content.length) {
+    return (
+      <div></div>
+    );
+  }
+
   const keys = Object.keys(props.content[0]);
   const header = keys.map((item) => (
     <Field key={item}>
